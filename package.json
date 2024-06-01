@@ -1,0 +1,1 @@
+{ "name": "app1", "version": "1.0", "dependencies": {"readline-sync": "1.4.10", "papaparse": "5.4.1"}}
