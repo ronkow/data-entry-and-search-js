@@ -143,41 +143,45 @@ function enter_birthyear() {
     return s;
 }
 
-//###################
-// 3. SEARCH
-//###################
+//##########################
+// MATCH RECORDS IN DATABASE
+//##########################
 
 function match_name(allDataArr, s) {
-    let matchedArr = [];
+    let arr = [];
+    let recordArr;	
 	
     for (const i of allDataArr) {				
         recordArr = i['name'].toLowerCase().split(' ');
         if (recordArr.length === 1) { 
-	    if (i['name'].toLowerCase() == s.toLowerCase()) { matchedArr.push(i); }
+	    if (i['name'].toLowerCase() == s.toLowerCase()) { arr.push(i); }
 		
 	} else {
-	    if (recordArr.indexOf(s) > -1) {matchedArr.push(i);}
+	    if (recordArr.indexOf(s) > -1) {arr.push(i);}
 	    // ANOTHER METHOD
-	    // if (recordArr.includes(s)) {matchedArr.push(i);}	
+	    // if (recordArr.includes(s)) {arr.push(i);}	
 	}	
     }
-    return matchedArr;	
+    return arr;	
 }
 
 
 function match_record(allDataArr, key, s) {
-    let matchedArr = [];
+    let arr = [];
     if (key === 'name') {
-        matchedArr = match_name(allDataArr, s);
+        arr = match_name(allDataArr, s);
 		
     } else {
 	for (const i of allDataArr) {
-	    if (i[key].toLowerCase() == s.toLowerCase()) { matchedArr.push(i); }
+	    if (i[key].toLowerCase() == s.toLowerCase()) { arr.push(i); }
 	}
     }
-    return matchedArr;
+    return arr;
 }	
 	
+//###################
+// 3. SEARCH
+//###################
 
 function search_database(arr, x, s) { 
     let arr1 = [];
